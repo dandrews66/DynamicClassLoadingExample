@@ -12,7 +12,7 @@ public class ClassReloader extends ClassLoader {
 
     @Override
     public Class<?> loadClass(String name) throws ClassNotFoundException {
-        //Since this method is recursive, only the original class through the new class loader. Load any dependencies through the system class loader
+        //Since this method is recursive, only load the original class through the new class loader. Load any dependencies through the system class loader
         if(classLoaded){
             return super.loadClass(name);
         }
