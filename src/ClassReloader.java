@@ -6,6 +6,10 @@ import java.net.URLConnection;
 
 /**
  * Created by dandrews on 10/11/16.
+ *
+ * Modified from http://tutorials.jenkov.com/java-reflection/dynamic-class-loading-reloading.html
+ *
+ *
  */
 public class ClassReloader extends ClassLoader {
     private boolean classLoaded;
@@ -25,6 +29,8 @@ public class ClassReloader extends ClassLoader {
             //Infer the URL of the class from the old class
             Class<?> clazz = Class.forName(name);
             URL url = clazz.getResource(clazz.getSimpleName() + ".class");
+
+            //TODO: Handle cases where the class did not previously exist
 
             //Load the class file in a byte array
             URLConnection connection = url.openConnection();
